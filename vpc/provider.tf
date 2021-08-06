@@ -11,8 +11,6 @@ terraform {
 provider "aws" {
   assume_role {
     role_arn     = "arn:aws:iam::${var.account_id}:role/OrganizationAccountCloudOpsAccessRole"
-    region = var.region
-    //session_name = "ops"
-    //external_id  = "EXTERNAL_ID"
   }
+  region = var.region
 }
