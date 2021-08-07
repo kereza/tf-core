@@ -13,6 +13,6 @@ module "sg_default" {
     egress_rules            = ["all-all"]
 
     tags = {
-        Name = "SG-jenkins-${var.stage_name}"
+        Name = "SG-jenkins-${var.env}"
     }
 }
