@@ -12,7 +12,7 @@ output "vpc_id" {
 }
 output "env" {
   description = "Export environment name"
-  value       = local.environment
+  value       = local.env
 }
 
 /*
