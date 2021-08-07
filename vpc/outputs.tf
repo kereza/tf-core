@@ -1,10 +1,10 @@
 output "azs" {
   description = "List of availability zones that we use"
-  value       = var.azs
+  value       = local.azs
 }
 output "cidr" {
   description = "VPC CIDR"
-  value       = var.cidr
+  value       = local.cidr
 }
 output "vpc_id" {
   description = "Export VPC ID"
@@ -12,7 +12,7 @@ output "vpc_id" {
 }
 output "env" {
   description = "Export environment name"
-  value       = var.environment
+  value       = local.environment
 }
 
 /*
