@@ -13,11 +13,6 @@ variable "env" {
     type = string
 }
 
-variable "per_environment_settings" {
-    description = "asas"
-    type = map(any)
-}
-
 locals {
   per_environment_settings = {
     dev = {
@@ -36,5 +31,12 @@ locals {
       database_subnets = ["10.4.8.0/24", "10.4.76.0/24" ]
       single_nat_gateway = true
     }
-  }
+  })
+
+  cidr = local.per_environment_settings[var.env]["cidr"]
+  azs = local.per_environment_settings[var.env]["azs"]
+  private_subnets = local.per_environment_settings[var.env]["private_subnets"]
+  public_subnets = local.per_environment_settings[var.env]["public_subnets"]
+  database_subnets = local.per_environment_settings[var.env]["database_subnets"]
+
 }
