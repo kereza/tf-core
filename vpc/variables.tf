@@ -14,7 +14,7 @@ variable "env" {
 }
 
 locals {
-  per_environment_settings = {
+  per_environment_settings = tomap({
     dev = {
       cidr = "10.2.0.0/16"
       azs = [ "eu-central-1a", "eu-central-1b"]
