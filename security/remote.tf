@@ -4,7 +4,7 @@ data "terraform_remote_state" "vpc" {
   config = {
     organization = "main-organization"
     workspaces = {
-      name = "vpc-dev"
+      name = "vpc-${var.env}"
     }
   }
 }

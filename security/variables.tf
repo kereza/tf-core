@@ -1,18 +1,14 @@
-module "sg_default" {
-    source = "terraform-aws-modules/security-group/aws"
-    version = "3.17.0"
-    name        = "SG default for default services"
-    description = "Default Security Group ${var.stage_name}"
-    vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
+variable "account_id" {
+    description = "Id of the AWS account to assume role. It is a TF cloud variable, coming from the master workspace"
+    type = string
+}
 
-    # Ingress rules taken from the module
-    ingress_cidr_blocks      = flatten([data.terraform_remote_state.vpc.outputs.cidr, values(var.peering_networks), var.public == false ? values(var.onprem_networks_for_dev_stages) : values(var.onprem_networks_for_prod_stages)])
-    ingress_rules            = ["http-80-tcp", "https-443-tcp", "ssh-tcp"]
+variable "region" {
+    description = "The default region in which we build infrastructure. It is a TF cloud variable, coming from the master workspace"
+    type = string
+}
 
-    egress_cidr_blocks      = ["0.0.0.0/0"]
-    egress_rules            = ["all-all"]
-
-    tags = {
-        Name = "SG-jenkins-${var.stage_name}"
-    }
+variable "env" {
+    description = "The current env. It is a TF cloud variable, coming from the master workspace"
+    type = string
 }

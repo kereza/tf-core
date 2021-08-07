@@ -9,7 +9,7 @@ variable "region" {
 }
 
 variable "env" {
-    description = "The current env"
+    description = "The current env. It is a TF cloud variable, coming from the master workspace"
     type = string
 }
 
