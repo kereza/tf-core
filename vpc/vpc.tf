@@ -12,7 +12,7 @@ module "vpc" {
 
   enable_dns_hostnames               = true
   enable_nat_gateway                 = true
-  single_nat_gateway                 = local.database_subnets
+  single_nat_gateway                 = local.single_nat_gateway
   enable_dhcp_options                = true
   dhcp_options_domain_name           = "ec2.internal"
   dhcp_options_domain_name_servers   = ["AmazonProvidedDNS"]
