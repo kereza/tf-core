@@ -39,4 +39,5 @@ locals {
   public_subnets = local.per_environment_settings[var.env]["public_subnets"]
   database_subnets = local.per_environment_settings[var.env]["database_subnets"]
 
+  tags = {terraform = "true", environment = var.env}
 }

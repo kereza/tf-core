@@ -17,5 +17,5 @@ module "vpc" {
   dhcp_options_domain_name           = "ec2.internal"
   dhcp_options_domain_name_servers   = ["AmazonProvidedDNS"]
 
-  tags = local.common_tags
+  tags = local.tags
 }
