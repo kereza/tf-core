@@ -13,8 +13,13 @@ variable "env" {
     type = string
 }
 
+variable "per_environment_settings" {
+    description = "asas"
+    type = map(any)
+}
+
 locals {
-  per_environment_settings = tomap({
+  per_environment_settings = {
     dev = {
       cidr = "10.2.0.0/16"
       azs = [ "eu-central-1a", "eu-central-1b"]
@@ -31,5 +36,5 @@ locals {
       database_subnets = ["10.4.8.0/24", "10.4.76.0/24" ]
       single_nat_gateway = true
     }
-  })
+  }
 }
