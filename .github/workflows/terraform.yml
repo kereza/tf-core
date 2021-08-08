@@ -27,8 +27,11 @@ jobs:
 
       - name: Terraform Init
         id: init
-        working-directory: ./vpc
+        working-directory: "{{ item }}"
         run: terraform init
+        loop:
+          - ./vpc
+          - ./security
       
       - name: Terraform Validate
         id: validate
