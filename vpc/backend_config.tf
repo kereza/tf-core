@@ -6,7 +6,7 @@ terraform {
     organization = "main-organization"
 
     workspaces {
-      prefix = "vpc-"
+      name = "vpc-dev"
     }
   }
 }
