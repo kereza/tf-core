@@ -1,7 +1,1 @@
-terraform {
-  backend "remote" {
-    organization = "main-organization"
-
-  }
-}
-
+../shared/backend_config.tf
