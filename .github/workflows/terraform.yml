@@ -27,6 +27,7 @@ jobs:
 
       - name: Terraform Init
         id: init
+        working-directory: ./vpc
         run: terraform init
       
       - name: Terraform Validate
