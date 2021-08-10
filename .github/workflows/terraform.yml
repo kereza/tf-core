@@ -29,16 +29,9 @@ jobs:
           terraform_version: 0.13.5
 
       - name: Terraform Format
-        run: pwd
+        run: echo ${{matrix.dir}}
 
-      - name: Terraform Format
-        run: ls -la
 
-      - name: Terraform Format
-        run: ls -la ../tf-core
-
-      - name: Terraform Format
-        run: ls -la ../../
 # jobs:
 #   terraform:
 #     name: "Terraform"
