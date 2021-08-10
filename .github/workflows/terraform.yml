@@ -32,6 +32,9 @@ jobs:
         run: pwd
 
       - name: Terraform Format
+        run: ls -la
+
+      - name: Terraform Format
         run: ls -la ../
 
       - name: Terraform Format
