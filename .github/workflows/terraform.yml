@@ -29,7 +29,10 @@ jobs:
           terraform_version: 0.13.5
 
       - name: Terraform Format
-        run: ls -la
+        run: pwd
+
+      - name: Terraform Format
+        run: ls -la ../
 # jobs:
 #   terraform:
 #     name: "Terraform"
