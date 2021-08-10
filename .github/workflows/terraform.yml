@@ -33,6 +33,9 @@ jobs:
 
       - name: Terraform Format
         run: ls -la ../
+
+      - name: Terraform Format
+        run: ls -la ../../
 # jobs:
 #   terraform:
 #     name: "Terraform"
