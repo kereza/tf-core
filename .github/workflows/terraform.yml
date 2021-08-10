@@ -5,38 +5,56 @@ on:
     branches:
       - main
   pull_request:
-
+  
 jobs:
-  terraform:
-    name: "Terraform"
+  directories: # Job that list subdirectories
     runs-on: ubuntu-latest
+    outputs:
+      dir: ${{ steps.set-dirs.outputs.dir }} # generate output name dir by using inner step output
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - id: set-dirs # Give it an id to handle to get step outputs in the outputs key above
+        run: echo "::set-output name=dir::$(ls -d */ | jq -R -s -c 'split("\n")[:-1]')"
+        # Define step output named dir base on ls command transformed to JSON thanks to jq
+  loop:
+    runs-on: ubuntu-latest
+    needs: [directories] # Depends on previous job
+    strategy:
+      matrix:
+        dir: ${{fromJson(needs.directories.outputs.dir)}} # List matrix strategy from directories dynamically
+    steps:
+      - run: echo ${{matrix.dir}}
+# jobs:
+#   terraform:
+#     name: "Terraform"
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
-        with:
-          terraform_version: 0.13.5
-          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+#       - name: Setup Terraform
+#         uses: hashicorp/setup-terraform@v1
+#         with:
+#           terraform_version: 0.13.5
+#           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-      - name: Terraform Format
-        id: fmt
-        working-directory: ./vpc
-        run: terraform fmt -check
+#       - name: Terraform Format
+#         id: fmt
+#         working-directory: ./vpc
+#         run: terraform fmt -check
 
-      - name: Terraform Init
-        id: init
-        working-directory: "{{ item }}"
-        run: terraform init
-        loop:
-          - ./vpc
-          - ./security
+#       - name: Terraform Init
+#         id: init
+#         working-directory: "{{ item }}"
+#         run: terraform init
+#         loop:
+#           - ./vpc
+#           - ./security
       
-      - name: Terraform Validate
-        id: validate
-        working-directory: ./vpc
-        run: terraform validate -no-color
+#       - name: Terraform Validate
+#         id: validate
+#         working-directory: ./vpc
+#         run: terraform validate -no-color
 
       # - name: Terraform Plan
       #   id: plan
