@@ -30,7 +30,7 @@ jobs:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
     - run: terraform fmt -check ${{matrix.dir}}
     - run: terraform workspace new dev
-    - run: cd ${{matrix.dir}} ** terraform init
+    - run: cd ${{matrix.dir}} && terraform init
     #- run: terraform validate
 
 
