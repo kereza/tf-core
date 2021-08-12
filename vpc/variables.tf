@@ -19,7 +19,7 @@ locals {
       cidr               = "10.2.0.0/16"
       azs                = ["eu-central-1a", "eu-central-1b"]
       private_subnets    = ["10.2.4.0/23", "10.2.68.0/23"]
-      public_subnets     = ["10.2.0.0/24", "10.2.64.0/24"]
+        public_subnets     = ["10.2.0.0/24", "10.2.64.0/24"]
       database_subnets   = ["10.2.8.0/24", "10.2.76.0/24"]
       single_nat_gateway = true
     }
