@@ -52,3 +52,16 @@ output "database_subnet_group" {
   description = "ID of database subnet group"
   value       = module.vpc.database_subnet_group
 }
+
+/*
+VPN
+*/
+output "client_key_pem" {
+  description = "ID of database subnet group"
+  value       = tls_private_key.client_side_vpn.private_key_pem
+}
+
+output "client_cert_pem" {
+  description = "ID of database subnet group"
+  value       = tls_locally_signed_cert.client_side_vpn.cert_pem
+}
