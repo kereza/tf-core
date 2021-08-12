@@ -28,7 +28,7 @@ jobs:
       with:
         terraform_version: 0.13.5
     - run: terraform fmt -check ${{matrix.dir}}
-    - run: cd ${{matrix.dir}} && terraform workspace select dev
+    - run: cd ${{matrix.dir}} && ls -la
     - run: terraform validate
 
 
