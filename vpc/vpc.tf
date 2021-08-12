@@ -11,7 +11,7 @@ module "vpc" {
   database_subnets = local.database_subnets
 
   enable_dns_hostnames             = true
-  enable_nat_gateway               = true
+  enable_nat_gateway               = false
   single_nat_gateway               = local.single_nat_gateway
   enable_dhcp_options              = true
   dhcp_options_domain_name         = "ec2.internal"
