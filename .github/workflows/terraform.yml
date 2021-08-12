@@ -27,7 +27,7 @@ jobs:
     - uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: 0.13.5
-    - run: terraform fmt ${{matrix.dir}}
+    - run: terraform fmt -check ${{matrix.dir}}
 
 
 # jobs:
