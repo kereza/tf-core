@@ -29,7 +29,7 @@ jobs:
       with:
         terraform_version: 0.13.5
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
-    - run: terraform fmt ${{matrix.dir}}
+    - run: terraform fmt -check ${{matrix.dir}}
       # # In order to validate the code we need to TF INIT and select some WORKSPACE
     # - run: terraform workspace new dev
     # - run: cd ${{matrix.dir}} && terraform init
