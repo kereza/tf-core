@@ -23,13 +23,8 @@ jobs:
       matrix:
         dir: ${{fromJson(needs.directories.outputs.dir)}} # List matrix strategy from directories dynamically
     steps:
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
-        with:
-          terraform_version: 0.13.5
-
-      - name: Terraform Format
-        run: echo ${{matrix.dir}}
+      steps:
+      - run: echo ${{matrix.dir}}
 
 
 # jobs:
