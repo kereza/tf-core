@@ -28,6 +28,8 @@ jobs:
       with:
         terraform_version: 0.13.5
     - run: terraform fmt -check ${{matrix.dir}}
+    - run: cd ${{matrix.dir}} && terraform workspace select dev && terraform init
+    - run: terraform validate
 
 
 # jobs:
