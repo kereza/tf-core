@@ -1,19 +1,19 @@
 data "aws_iam_policy_document" "assume_role_eks" {
   statement {
-    effect = "Allow"
-    actions = [ "sts:AssumeRole" ]
+    effect  = "Allow"
+    actions = ["sts:AssumeRole"]
     principals {
-      type = "Service"
+      type        = "Service"
       identifiers = ["eks.amazonaws.com"]
     }
   }
 }
 
 resource "aws_iam_role" "eks_cluster" {
-    name = "UserManaged-${var.env}-eks"
-    path = "/"
-    assume_role_policy = data.aws_iam_policy_document.assume_role_eks.json
-    permissions_boundary = "arn:aws:iam::${var.account_id}:policy/MainBoundaryPolicy"
+  name                 = "UserManaged-${var.env}-eks"
+  path                 = "/"
+  assume_role_policy   = data.aws_iam_policy_document.assume_role_eks.json
+  permissions_boundary = "arn:aws:iam::${var.account_id}:policy/MainBoundaryPolicy"
 }
 
 resource "aws_iam_role_policy_attachment" "eks_clusterpolicy" {
