@@ -1,16 +1,16 @@
-output "default_id" {
-  description = "SG id default"
-  value       = module.sg_default.this_security_group_id
-}
-
 output "eks_id" {
   description = "SG for the EKS cluster"
   value       = module.sg_eks.this_security_group_id
 }
 
 output "eks_private_endpoint_id" {
-  description = "SG for the EKS workers"
+  description = "SG for the private EKS endpoint"
   value       = module.sg_eks_private_endpoint.this_security_group_id
+}
+
+output "eks_nodes_ssh" {
+  description = "SG for the EKS workers for SSH access"
+  value       = module.sg_eks_nodes.this_security_group_id
 }
 
 /*

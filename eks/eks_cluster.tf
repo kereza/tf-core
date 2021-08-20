@@ -21,7 +21,7 @@ module "my-cluster" {
 
   # Endpoints For Access
   cluster_endpoint_private_access                = true
-  cluster_create_endpoint_private_access_sg_rule = true
+  cluster_create_endpoint_private_access_sg_rule = false
   cluster_endpoint_private_access_sg             = [data.terraform_remote_state.security.outputs.eks_private_endpoint_id]
   cluster_endpoint_public_access                 = true
   cluster_endpoint_public_access_cidrs           = ["87.153.134.14/32"]
@@ -29,14 +29,14 @@ module "my-cluster" {
   # Worker Groups and settings
   node_groups = {
     main1 = {
-      desired_capacity    = 1
-      max_capacity        = 5
-      min_capacity        = 1
-      iam_role_arn        = aws_iam_role.eks_node_group.arn
-      ami_type            = "AL2_x86_64"
-      ami_release_version = "1.21.2-20210722"
-      #key_name
-      //source_security_group_ids = 
+      desired_capacity         = 1
+      max_capacity             = 5
+      min_capacity             = 1
+      iam_role_arn             = aws_iam_role.eks_node_group.arn
+      ami_type                 = "AL2_x86_64"
+      ami_release_version      = "1.21.2-20210722"
+      key_name                 = data.terraform_remote_state.vpc.outputs.ssh_deafult_key
+      worker_security_group_id = [data.terraform_remote_state.security.outputs.eks_nodes_ssh]
 
       instance_types = [local.instance_types]
       disk_size      = 50
@@ -68,4 +68,8 @@ module "my-cluster" {
   #   map_roles
   #   map_users
   tags = local.tags
+
+  depends_on = [
+    aws_iam_role.eks_cluster
+  ]
 }
