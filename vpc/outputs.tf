@@ -16,6 +16,14 @@ output "env" {
 }
 
 /*
+SSH
+*/
+output "ssh_deafult_key" {
+  description = "Default SSH key for the stage"
+  value       = aws_key_pair.default.key_name
+}
+
+/*
   SUBNETS
   */
 output "private_subnets" {
@@ -51,17 +59,4 @@ output "database_subnets_cidr_blocks" {
 output "database_subnet_group" {
   description = "ID of database subnet group"
   value       = module.vpc.database_subnet_group
-}
-
-/*
-VPN
-*/
-output "client_key_pem" {
-  description = "Materia for the client key"
-  value       = tls_private_key.client_side_vpn.private_key_pem
-}
-
-output "client_cert_pem" {
-  description = "Material for the cleint cert"
-  value       = tls_locally_signed_cert.client_side_vpn.cert_pem
 }

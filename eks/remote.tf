@@ -9,13 +9,13 @@ data "terraform_remote_state" "vpc" {
   }
 }
 
-data "terraform_remote_state" "vpn" {
+data "terraform_remote_state" "security" {
   backend = "remote"
 
   config = {
     organization = "main-organization"
     workspaces = {
-      name = "tf-central-vpn"
+      name = "security-${var.env}"
     }
   }
 }
