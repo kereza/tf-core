@@ -60,3 +60,4 @@ output "database_subnet_group" {
   description = "ID of database subnet group"
   value       = module.vpc.database_subnet_group
 }
+
