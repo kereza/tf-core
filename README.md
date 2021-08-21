@@ -1,4 +1,4 @@
-# tf-core
+# the Core repository where we manage the different stages and their respective variables.
 
 This repo is part of series of personal repos where I do tests on the following topics:
 
