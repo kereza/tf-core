@@ -42,4 +42,3 @@ locals {
 
   tags = { terraform = "true", environment = var.env }
 }
-
