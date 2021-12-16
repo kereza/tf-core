@@ -41,4 +41,4 @@ locals {
   single_nat_gateway = local.per_environment_settings[var.env]["single_nat_gateway"]
 
   tags = { terraform = "true", environment = var.env }
-}
+ }
