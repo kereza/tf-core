@@ -1,3 +1,4 @@
+
 output "azs" {
   description = "List of availability zones that we use"
   value       = local.azs
