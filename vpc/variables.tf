@@ -40,5 +40,5 @@ locals {
   database_subnets   = local.per_environment_settings[var.env]["database_subnets"]
   single_nat_gateway = local.per_environment_settings[var.env]["single_nat_gateway"]
 
-  tags = { terraform = "true", environment = var.env }
+  tags = { qwqw = "buu", terraform = "true", environment = var.env }
 }
