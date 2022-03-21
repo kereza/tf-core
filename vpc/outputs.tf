@@ -16,11 +16,6 @@ output "env" {
   value       = var.env
 }
 
-output "peering_id" {
-  description = "Peering connection ID"
-  value       = aws_vpc_peering_connection.keri_org.id
-}
-
 
 /*
 SSH

@@ -31,6 +31,14 @@ locals {
       database_subnets   = ["10.4.8.0/24", "10.4.76.0/24"]
       single_nat_gateway = true
     }
+    kerezov-test = {
+      cidr               = "10.90.0.0/16"
+      azs                = ["eu-central-1a", "eu-central-1b"]
+      private_subnets    = ["10.90.4.0/23", "10.90.68.0/23"]
+      public_subnets     = ["10.90.0.0/24", "10.90.64.0/24"]
+      database_subnets   = ["10.90.8.0/24", "10.90.76.0/24"]
+      single_nat_gateway = true
+    }
   })
 
   cidr               = local.per_environment_settings[var.env]["cidr"]
